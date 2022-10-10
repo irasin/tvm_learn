@@ -95,3 +95,29 @@ sudo bash -c 'echo "2606:50c0:8002::154 raw.githubusercontent.com" >> /etc/hosts
 sudo bash -c 'echo "2606:50c0:8003::154 raw.githubusercontent.com" >> /etc/hosts'
 
 ```
+
+
+# windows上的修改
+
+windows访问github也是老大难了，也可以修改host
+
+1. 打开`C:\Windows\System32\drivers\etc\hosts`，添加如下内容
+
+```
+
+140.82.113.3 github.com
+151.101.1.194 github.global.ssl.fastly.net
+151.101.65.194 github.global.ssl.fastly.net
+151.101.129.194 github.global.ssl.fastly.net
+151.101.193.194 github.global.ssl.fastly.net
+185.199.108.133 raw.githubusercontent.com
+185.199.109.133 raw.githubusercontent.com
+185.199.110.133 raw.githubusercontent.com
+185.199.111.133 raw.githubusercontent.com
+2606:50c0:8000::154 raw.githubusercontent.com
+2606:50c0:8001::154 raw.githubusercontent.com
+2606:50c0:8002::154 raw.githubusercontent.com
+2606:50c0:8003::154 raw.githubusercontent.com
+```
+
+2. 打开cmd，执行`ipconfig /flushdns`刷新配置
