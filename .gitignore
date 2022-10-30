@@ -1,6 +1,6 @@
 .vscode
 *.exe
 .github
-
+*.jpg
 pkl_memoize_py3
 *pyc
