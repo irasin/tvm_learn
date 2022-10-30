@@ -34,8 +34,6 @@ class DetectionCOCO128Evaluator(Evaluator):
         _, _, height, width = im.shape
         targets[:, 2:] *= np.array((width, height, width, height))
 
-        self.conf_thres = 0.001
-        self.iou_thres = 0.6
         pred = non_max_suppression(torch.from_numpy(pred), self.conf_thres,
                                    self.iou_thres)
 
@@ -46,8 +44,8 @@ class DetectionCOCO128Evaluator(Evaluator):
             labels = targets[targets[:, 0] == idx, 1:]
             labels = torch.from_numpy(labels)
 
-            nl, npr = labels.shape[0], det.shape[
-                0]  # number of labels, predictions
+            # number of labels, predictions
+            nl, npr = labels.shape[0], det.shape[0]
             correct = torch.zeros(npr, self.niou, dtype=torch.bool)  # init
 
             if npr == 0:

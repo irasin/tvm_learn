@@ -28,6 +28,10 @@ def create_coco128_detection_workload(workload_info):
                                 drop_last=drop_last,
                                 collate_fn=dataset.collate_fn)
 
-    evaluator = DetectionCOCO128Evaluator()
+    conf_thres = workload_info.get("conf_thres", 0.001)
+    iou_thres = workload_info.get("iou_thres", 0.065)
+
+    evaluator = DetectionCOCO128Evaluator(conf_thres=conf_thres,
+                                          iou_thres=iou_thres)
 
     return loader, evaluator
